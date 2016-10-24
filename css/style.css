@@ -1,0 +1,520 @@
+/* CSS Document */
+body{
+font-family: 'Open Sans', sans-serif;
+margin: 0; padding: 0; 
+}
+*{ margin:0px; padding:0px;}
+a{ text-decoration:none;}
+img{border:none;}
+.clr{ clear:both; margin:0px; padding:0px;}
+h1,h2,h3,h4,h5,h6,h7,p,span{ margin:0px; padding:0px;}
+
+
+@media screen and (min-color-index:0) 
+and(-webkit-min-device-pixel-ratio:0) { @media
+{
+.courses-description button.accordion::after{
+content: "+" !important;
+font-size: 22px;
+color: white;
+float: right;
+margin-left: 5px;
+margin-top: 4px;
+}
+.courses-description button.accordion.active::after {
+content: "-" !important;
+color: white !important;
+}
+}
+}
+.inner-content {
+
+  padding-bottom: 70px;
+
+}
+.inner-content #loginform .input {
+  border: 1px solid #ccc;
+  float: left;
+  padding: 10px;
+  width: 77%;
+}
+.inner-content #loginform label {
+  color: #555;
+  float: left;
+  font-size: 18px;
+  font-weight: 600;
+  padding-right: 10px;
+  text-transform: capitalize;
+  width: 16%;
+}
+.inner-content #loginform .login-remember label {
+  width: 100%;
+  float: left;
+}
+.inner-content #wp-submit.button-primary {
+  background: rgba(255, 186, 6, 0.95) none repeat scroll 0 0 !important;
+  border: medium none;
+  color: #000;
+  float: none;
+  font-size: 24px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  width: 40%;
+}
+.inner-content #loginform p {
+  float: left;
+  line-height: 33px;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.wrapper {
+  height: auto;
+  margin: 0 auto;
+  max-width: 800px;
+  width: 100%;
+}
+header {
+  float: left;
+  width: 100%;
+}
+.logo-part {
+  background: #febc19 none repeat scroll 0 0;
+  box-sizing: border-box;
+  float: left;
+  padding: 14px 30px;
+  width: 100%;
+}
+.sub_header {
+  float: left;
+  width: 100%;
+}
+.container {
+  box-sizing: border-box;
+  float: left;
+  padding: 0 30px;
+  width: 100%;
+}
+.search-course-description {
+  float: left;
+  margin-top: 30px;
+  width: 100%;
+}
+.heading {
+  background: #e64a19 none repeat scroll 0 0;
+  box-sizing: border-box;
+  float: left;
+  margin-top: 30px;
+  padding: 2px;
+  text-align: center;
+  width: 100%;
+}
+.home-select_course {
+  border: 1px solid #000 !important;
+  box-sizing: border-box;
+  float: left;
+  font-size: 22px !important;
+  padding: 18px !important;
+  width: 100%;
+}
+.heading h2 {
+  color: #fff;
+  font-family: "Raleway",sans-serif;
+  font-size: 34px;
+  font-weight:400;
+}
+.heading img {
+  padding-right: 15px;
+}
+.content-blk {
+  float: left;
+  width: 100%;
+}
+.inner-content {
+  float: left;
+  margin-top: 30px;
+  width: 100%;
+}
+.inner-content h4 {
+  border-radius: 10px;
+  font-size: 21px;
+  font-weight: 400;
+  margin-bottom:20px;
+  padding: 10px;
+  text-align: center;
+  text-transform: uppercase;
+}
+.inner-content h4 a {
+  color: #000;
+}
+.green {
+  background: #21b7a2 none repeat scroll 0 0;
+}
+.orange {
+  background: #f2764a none repeat scroll 0 0;
+}
+.darkgreen {
+  background: #9f9559 none repeat scroll 0 0;
+}
+.blue {
+  background: #229aef none repeat scroll 0 0;
+}
+.pink {
+  background: #dd4e55 none repeat scroll 0 0;
+}
+footer {
+  background: #404040 none repeat scroll 0 0;
+  bottom: 0;
+  float: left;
+  margin-top: 20px;
+  padding: 14px 0;
+position:fixed;
+  width: 100%;
+}
+footer a {
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.signup {
+  float: right;
+}
+.login {
+  float: left;
+}
+footer {
+  background: #404040 none repeat scroll 0 0;
+  float: left;
+  margin-top: 20px;
+  padding: 14px 0;
+  width: 100%;
+}
+.app-curses .course-item .course-title {
+  -moz-box-orient: vertical;
+  display: -webkit-box;
+  float: left;
+  font-size: 16px;
+  font-weight: 700;
+  height: 50px;
+  line-height: 25px;
+  margin: 11px 0 22px;
+  text-overflow: ellipsis;
+  text-transform: none;
+  width: 100%;
+}
+.app-curses .course-item .course-title{
+
+  border-width: 0 1px 1px;
+  line-height: 25px;
+  padding: 0 20px;
+  box-sizing: border-box;
+  position: relative;
+}
+.app-curses .course-item {
+  float: left;
+  width: 100%;
+}
+.app-curses .lpr_course {
+  float: left;
+  width: 47%;
+}
+.lpr_course.even {
+  margin-right: 40px;
+}
+.app-curses .course-thumbnail img {
+  float: left;
+  width: 100%;
+}
+.app-curses .course-thumbnail {
+  float: left;
+  width: 100%;
+}
+
+.app-curses .course-item .course-title a::before {
+  background: #ffb606 none repeat scroll 0 0;
+  content: "";
+  height: 3px;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  bottom: -12px;
+  width: 50px;
+  z-index: 10;
+}
+.app-curses .course-item .course-title a::after {
+  background: #e5e5e5 none repeat scroll 0 0;
+  content: "";
+  height: 1px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  bottom: -12px;
+  width: 100%;
+}
+.title-div {
+  float: left;
+  width: 100%;
+  margin-bottom: 25px;
+}
+.app-curses .course-title > a {
+  color: #000;
+}
+.courses-description button.accordion:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 18px !important;
+    color: #fff;
+    float: right;
+    margin-left: 5px;
+	margin-top: 10px;
+}
+.courses-description {
+  float: left;
+  width: 100%;
+}
+
+.courses-description button.accordion.active:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+	color: #fff !important;
+}
+.courses-description div.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.6s ease-in-out;
+    opacity: 0;
+}
+
+.courses-description div.panel.show {
+    opacity: 1;
+    max-height: 500px; /* Whatever you like, as long as its more than the height of the content (on all screen sizes) */
+}
+ /* Style the buttons that are used to open and close the accordion panel */
+.courses-description button.accordion {
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  border-bottom: medium none;
+  border-image: none;
+  border-left: medium none;
+  border-radius: 14px;
+  border-top: medium none;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Open Sans",sans-serif;
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 14px;
+  outline: medium none;
+  padding: 4px 18px;
+  text-align: left;
+  transition: all 0.4s ease 0s;
+  width: 100%;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.courses-description button.accordion.active, button.accordion:hover {
+    background-color: #337ab7;
+}
+.courses-description .blueaccor {
+  background: #2dc4d9 none repeat scroll 0 0;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.courses-description div.panel {
+    padding:5px 18px 26px 18px;
+    background-color: white;
+    display: none;
+}
+
+/* The "show" class is added to the accordion panel when the user clicks on one of the buttons. This will show the panel content */
+.courses-description div.panel.show {
+    display: block;
+}
+.courses-description .orgeaccor {
+  background: #de6e02 none repeat scroll 0 0;
+}
+.courses-description .grnaccor {
+  background: #22b7a3 none repeat scroll 0 0;
+}
+.courses-description .accordian-content {
+  float: left;
+  text-align: justify;
+  width: 100%;
+}
+.large-top-img {
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  float: left;
+  padding: 10px;
+  position: relative;
+  width: 100%;
+  margin-bottom: 27px;
+}
+.lgimg {
+  background: rgba(0, 0, 0, 0.5) none repeat scroll 0 0;
+  float: left;
+  width: 100%;
+}
+.lgimg > img {
+  float: left;
+  opacity: 0.6;
+  width: 100%;
+}
+.toptext h3 {
+  color: #fff;
+  float: left;
+  font-family: "Open Sans",sans-serif;
+  font-size: 30px;
+  font-weight: 600;
+  width: auto;
+}
+.toptext {
+  box-sizing: border-box;
+  float: left;
+  padding: 0 10px;
+  position: absolute;
+  top: 35%;
+  width: 100%;
+}
+.inner-content .toptext h4 {
+  background: #febc19 none repeat scroll 0 0;
+  border-radius: 0;
+  float: right;
+  font-size: 15px;
+  font-weight: 700;
+  margin-right: 21px;
+}
+.registaration-blk .form-control {
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  color: #555555;
+  float: left;
+  font-family: "Open Sans",sans-serif;
+  font-size: 18px;
+  font-weight: 400 !important;
+  padding: 5px 10px;
+  width: 100%;
+}
+.registaration-blk .row {
+  float: left;
+  width: 100%;
+  margin-bottom: 18px;
+}
+.registaration-blk form {
+  float: left;
+  width: 100%;
+}
+.registaration-blk label {
+  float: left;
+  width: 10%;
+}
+.registaration-blk .restinput {
+  float: right;
+  width: 90%;
+}
+.registaration-blk .row label img {
+  margin-left: 8px;
+}
+.registaration-blk span {
+  color: red;
+}
+.registaration-blk .submit {
+  float: left;
+  text-align: center;
+  width: 100%;
+}
+.registaration-blk .submit .button.button-primary.button-large{
+  background: rgba(255, 186, 6, 0.95) none repeat scroll 0 0 !important;
+  border: medium none;
+  color: #000;
+  float: none;
+  font-size: 24px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  width: 40%;
+}
+/*****************************responsive startss*********************************/
+@media(max-width: 1024px){
+
+.wrapper {
+  height: auto;
+  margin: 0 auto;
+  max-width: 100%;
+  width: 100%;
+}
+}
+@media(max-width: 726px){
+.lpr_course.even {
+  margin-right: 23px;
+}
+}
+@media(max-width: 600px){
+.registaration-blk .restinput {
+  float: left;
+  width: 100%;
+}
+.registaration-blk label {
+  float: left;
+  width: 100%;
+}
+}
+@media(max-width: 552px){
+.toptext {
+  margin-top: 13px;
+  position: unset;
+}
+.toptext h3 {
+  color: #000;
+font-size: 20px;
+}
+}
+@media(max-width: 480px){
+
+.heading h2 {
+ font-size: 30px;
+}
+.inner-content h4 {
+ font-size: 18px;
+}
+.app-curses .lpr_course {
+  float: left;
+  width: 100%;
+}
+.lpr_course.even {
+  margin-right: 0;
+}
+.courses-description button.accordion {
+ font-size: 22px;
+}
+.inner-content .toptext h4 {
+ margin-right: 0;
+}
+
+}
+@media(max-width: 320px){
+.inner-content h4 {
+  font-size: 15px;
+}
+.courses-description button.accordion {
+  font-size: 19px;
+}
+.courses-description button.accordion::after {
+ margin-top: 5px;
+}
+.toptext h3 {
+  color: #000;
+  font-size: 16px;
+  margin-bottom: 10px;
+  text-align: left;
+  width: 100%;
+}
+.inner-content .toptext h4 {
+ float: left;
+}
+.registaration-blk .submit .button.button-primary.button-large {
+ font-size: 20px;
+}
+}
