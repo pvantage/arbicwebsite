@@ -26,8 +26,7 @@ function accountLogout(user_ids){
 	location.reload();
 }
 
-
-
+	
 function checkConnection() {
     var networkState = navigator.network.connection.type;
 

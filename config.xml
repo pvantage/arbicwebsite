@@ -9,6 +9,9 @@
 	<preference name="orientation" value="portrait" />
 	<preference name="prerendered-icon" value="true" />
 	<preference name="deployment-target" value="7.0" />		
+	<plugins>
+        <plugin name="NetworkStatus" value="CDVConnection" />
+    </plugins>
 	<plugin name="cordova-plugin-device" spec="1.0.1" source="pgb" />		
 	<icon gap:platform="webos" src="icons/ios/icon-180.png" />
 	<icon src="images/mobi_icon.jpg" gap:platform="android" gap:density="ldpi" />
