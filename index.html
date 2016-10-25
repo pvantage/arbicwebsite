@@ -89,7 +89,28 @@ jQuery(document).ready(function(){
 						var option_val = '<option value="">--- Please select a course ----</option>';
 						jQuery(data['courses']).each(function(i){
 							
-							option_val += '<option value="'+ data['courses'][i]['ID'] + '">' + data['courses'][i]['name'] + '</option>';
+							var page_url = '';
+						   if(parseInt(data['courses'][i]['ID']) == 5299)
+							{
+								page_url = 'biostatistics.html';	
+							}else if(parseInt(data['courses'][i]['ID']) == 5264)
+							{
+								page_url = 'climate-change.html';	
+							}else if(parseInt(data['courses'][i]['ID']) == 6798)
+							{
+								page_url = 'epi-info.html';	
+							}else if(parseInt(data['courses'][i]['ID']) == 5227)
+							{
+								page_url = 'epidemiological-surveillance-of-public-health.html';	
+							}else if(parseInt(data['courses'][i]['ID']) == 5286)
+							{
+								page_url = 'epidemiology.html';	
+							}else if(parseInt(data['courses'][i]['ID']) == 5319)
+							{
+								page_url = 'spss-training-course.html';	
+							}
+							
+							option_val += '<option value="' + page_url + '">' + data['courses'][i]['name'] + '</option>';
 							
 						});
 						
@@ -109,8 +130,20 @@ jQuery(document).ready(function(){
 			loadInventors();
 		}
 						
-	 },500);  
+	 },500); 
+	 
+	 jQuery("#selected_course").on('change', function(){
+		 
+		 var goto_page = jQuery(this).val();
+		
+			if(goto_page != "")
+			{
+				window.location = goto_page;
+			}
+	});
+	  
 });	
+
 	
 </script>
 </head>

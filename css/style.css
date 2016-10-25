@@ -8,7 +8,22 @@ a{ text-decoration:none;}
 img{border:none;}
 .clr{ clear:both; margin:0px; padding:0px;}
 h1,h2,h3,h4,h5,h6,h7,p,span{ margin:0px; padding:0px;}
-
+.ul-document li{list-style-type: none;
+text-transform: uppercase;              
+padding:1% 0;
+text-decoration: none;
+}
+.ul-document li a{
+  color: black;
+}
+.toptext .font-size{
+  font-size: 21px;
+}
+.toptext .text-font{
+	font-size:17px;}
+body li{
+  list-style-type: none;
+}
 
 @media screen and (min-color-index:0) 
 and(-webkit-min-device-pixel-ratio:0) { @media

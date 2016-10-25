@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-    <widget xmlns = "http://www.w3.org/ns/widgets"  xmlns:gap = "http://phonegap.com/ns/1.0"  id = "hcwcbmoh.com"  versionCode = "1" version = "1.0.0" > 
+    <widget xmlns   = "http://www.w3.org/ns/widgets"
+    xmlns:gap   = "http://phonegap.com/ns/1.0"
+    id          = "hcwcbmoh.com"
+    versionCode = "1" 
+    version     = "1.0.0" >
 
     <name>Hcwcbmoh</name>
 
@@ -9,7 +13,8 @@
 	<preference name="orientation" value="portrait" />
 	<preference name="prerendered-icon" value="true" />
 	<preference name="deployment-target" value="7.0" />		
-	<plugin name="cordova-plugin-device" spec="1.0.1" source="pgb" />		
+	<plugin name="cordova-plugin-device" spec="1.0.1" source="pgb" />
+			
 	<icon gap:platform="webos" src="icons/ios/icon-180.png" />
 	<icon src="images/mobi_icon.jpg" gap:platform="android" gap:density="ldpi" />
 	<icon src="images/mobi_icon.jpg" gap:platform="android" gap:density="mdpi" />
@@ -36,5 +41,6 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-	<allow-navigation href="*" />	
+	<allow-navigation href="*" />
+		
 </widget>
