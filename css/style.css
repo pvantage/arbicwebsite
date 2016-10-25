@@ -284,12 +284,24 @@ footer {
   color: #000;
 }
 .courses-description button.accordion:after {
-    content: '\02795'; /* Unicode character for "plus" sign (+) */
-    font-size: 18px !important;
+    content: '\02795';
+    font-size: 0px !important;
     color: #fff;
     float: right;
     margin-left: 5px;
-	margin-top: 10px;
+    margin-top: 10px;
+    background: url(../images/plus.png) no-repeat right !important;
+    border: none;
+    width: 20px;
+    height: 23px;
+}
+
+.courses-description button.accordion.active:after {
+	background: url(../images/minus.png) no-repeat right !important;
+}
+
+.courses-description button.accordion.active:after {
+	background: url(../images/minus.png) no-repeat right !important;
 }
 .courses-description {
   float: left;
