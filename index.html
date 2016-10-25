@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500" rel="stylesheet"> 
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet"> 
 <script src="js/jquery.min.js"></script>
-<!--<script type="text/javascript" charset="utf-8" src="cordova.js"></script>-->
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 <script type="text/javascript" src="js/config.js"></script>
 <script type="text/javascript">
 
@@ -26,7 +26,7 @@ jQuery(document).ready(function(){
     if(window.XDomainRequest){contentType = "text/plain";}
 	jQuery.support.cors = true;	
 	
-	var visiter_id = gup('visiter_id');		
+	
 	var device_id = jQuery('#device_id').val();	
 	
 	if (localStorage.getItem("inventors") !== null) {
@@ -146,4 +146,12 @@ jQuery(document).ready(function(){
 </div>
 </footer>
 </body>
+<script type="text/javascript">
+jQuery(document).ready(function(e) {
+    if(user_id > 0)
+	{
+		jQuery(".signup").hide();	
+	}
+});
+</script>
 </html>

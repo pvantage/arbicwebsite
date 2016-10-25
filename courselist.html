@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
 <script src="js/jquery.min.js"></script>
-<!--<script type="text/javascript" charset="utf-8" src="cordova.js"></script>-->
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 <script type="text/javascript" src="js/config.js"></script>
 <script type="text/javascript">
 
@@ -50,8 +50,7 @@ jQuery(document).ready(function(){
 			 dataType: 'json',  
 			 data: {inventor_id:inventor_id},  
 			 crossDomain: true,  			 	
-			 complete: function() {
-				
+			 complete: function() {				
 				jQuery('body .preloader').remove();
 				jQuery('body .bodyoverlay').remove();
 				
@@ -63,40 +62,29 @@ jQuery(document).ready(function(){
 								jQuery(".app-curses").html(data['courses']);
 								localStorage.setItem('inventor_name_' + inventor_id, data['inventor']);
 								localStorage.setItem('course_list_' + inventor_id, data['courses']);
-							}
-			 		}
+						}
+			 	}
 		   });
 		   
-		}		   			
+		} 			
 	
 });		
 </script>
 </head>
 <body>
-<div class="wrapper">
-  
+<div class="wrapper">  
   <header>
-    <div class="logo-part"><img src="images/logo.png" /></div>
+    <div class="logo-part"><a href="./index.html"><img src="images/logo.png" /></a></div>
     <div class="sub_header"><div class="heading" id="inventor_name"></div></div>
-  </header>
-  
-  
+  </header>  
   <div class="content-blk">
     <div class="container">
       <div class="inner-content">
         <div class="app-curses"></div>
-      </div>
-      
-      
+      </div>      
     </div>
-  </div>
-  
-  
-  
-  
+  </div>  
 </div>
-
-
 <footer>
   <div class="container"> <a class="login" href="#">Login </a> <a class="signup" href="#">Sign Up</a> </div>
 </footer>
