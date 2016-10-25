@@ -14,7 +14,6 @@
 
 var internet_status = window.navigator.onLine;
 
-alert(internet_status);
 
 jQuery(document).ready(function(){
 	
@@ -105,8 +104,10 @@ jQuery(document).ready(function(){
 		
 		}	
 		
-						
-		loadInventors();
+		if(internet_status)
+		{				
+			loadInventors();
+		}
 						
 	 },500);  
 });	
