@@ -16,18 +16,18 @@
 	<plugin name="cordova-plugin-device" spec="1.0.1" source="pgb" />
 			
 	<icon gap:platform="webos" src="icons/ios/icon-180.png" />
-	<icon src="images/mobi_icon.png" gap:platform="android" gap:density="ldpi" />
-	<icon src="images/mobi_icon.png" gap:platform="android" gap:density="mdpi" />
-	<icon src="images/mobi_icon.png" gap:platform="android" gap:density="hdpi" />
-	<icon src="images/mobi_icon.png" gap:platform="android" gap:density="xhdpi" />
-	<icon src="images/mobi_icon.png" gap:platform="android" gap:density="xxhdpi" />
-	<icon src="images/mobi_icon.png" gap:platform="android" gap:density="ldpi" />
-	<icon src="images/mobi_icon.png" gap:platform="android" gap:density="mdpi" />
-	<icon src="images/mobi_icon.png" gap:platform="android" gap:density="hdpi" />
-	<icon src="images/mobi_icon.png" gap:platform="android" gap:density="xhdpi" />
-	<icon src="images/mobi_icon.png" gap:platform="android" gap:density="xxhdpi" />
-	<icon src="images/mobi_icon.png" gap:platform="winphone" />
-	<icon src="images/mobi_icon.png" gap:platform="winphone" gap:role="background" />
+	<icon src="images/mobi_icon.jpg" gap:platform="android" gap:density="ldpi" />
+	<icon src="images/mobi_icon.jpg" gap:platform="android" gap:density="mdpi" />
+	<icon src="images/mobi_icon.jpg" gap:platform="android" gap:density="hdpi" />
+	<icon src="images/mobi_icon.jpg" gap:platform="android" gap:density="xhdpi" />
+	<icon src="images/mobi_icon.jpg" gap:platform="android" gap:density="xxhdpi" />
+	<icon src="images/mobi_icon.jpg" gap:platform="android" gap:density="ldpi" />
+	<icon src="images/mobi_icon.jpg" gap:platform="android" gap:density="mdpi" />
+	<icon src="images/mobi_icon.jpg" gap:platform="android" gap:density="hdpi" />
+	<icon src="images/mobi_icon.jpg" gap:platform="android" gap:density="xhdpi" />
+	<icon src="images/mobi_icon.jpg" gap:platform="android" gap:density="xxhdpi" />
+	<icon src="images/mobi_icon.jpg" gap:platform="winphone" />
+	<icon src="images/mobi_icon.jpg" gap:platform="winphone" gap:role="background" />
 	
 	<gap:splash src="icons/ios/screen-iphone-portrait.png" gap:platform="ios" width="180" height="180" />
 	<icon src="icons/ios/icon-120.png" platform="ios" width="120" height="120" />
