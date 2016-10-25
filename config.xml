@@ -7,14 +7,17 @@
 
     <name>Hcwcbmoh</name>
 
-    <description>Hcwcbmoh</description>
+    <description>
+		Hcwcbmoh
+	</description>
 
-    <author href="http://www.vantagewebtech.com" email="vantage.krishna@gmail.com">Krishna Kumar</author>
+    <author href="http://www.vantagewebtech.com" email="vantage.krishna@gmail.com">
+		Krishna Kumar
+	</author>
 	<preference name="orientation" value="portrait" />
 	<preference name="prerendered-icon" value="true" />
 	<preference name="deployment-target" value="7.0" />		
-	<plugin name="cordova-plugin-device" spec="1.0.1" source="pgb" />
-			
+	<plugin name="cordova-plugin-device" spec="1.0.1" source="pgb" />			
 	<icon gap:platform="webos" src="icons/ios/icon-180.png" />
 	<icon src="images/mobi_icon.jpg" gap:platform="android" gap:density="ldpi" />
 	<icon src="images/mobi_icon.jpg" gap:platform="android" gap:density="mdpi" />
@@ -27,8 +30,7 @@
 	<icon src="images/mobi_icon.jpg" gap:platform="android" gap:density="xhdpi" />
 	<icon src="images/mobi_icon.jpg" gap:platform="android" gap:density="xxhdpi" />
 	<icon src="images/mobi_icon.jpg" gap:platform="winphone" />
-	<icon src="images/mobi_icon.jpg" gap:platform="winphone" gap:role="background" />
-	
+	<icon src="images/mobi_icon.jpg" gap:platform="winphone" gap:role="background" />	
 	<gap:splash src="icons/ios/screen-iphone-portrait.png" gap:platform="ios" width="180" height="180" />
 	<icon src="icons/ios/icon-120.png" platform="ios" width="120" height="120" />
 	<icon src="icons/ios/icon-180.png" platform="ios" width="180" height="180" />
@@ -41,6 +43,5 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-	<allow-navigation href="*" />
-		
+	<allow-navigation href="*" />		
 </widget>
