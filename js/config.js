@@ -25,7 +25,7 @@ function accountLogout(user_ids){
 	localStorage.removeItem('user_id');
 	location.reload();
 }
-
+/*
 	
 function checkConnection() {
     var networkState = navigator.network.connection.type;
@@ -40,4 +40,4 @@ function checkConnection() {
     states[Connection.NONE]     = 'No network connection';
 
     alert('Connection type: ' + states[networkState]);
-}
+}*/

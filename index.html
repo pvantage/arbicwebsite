@@ -12,8 +12,9 @@
 <script type="text/javascript" src="js/config.js"></script>
 <script type="text/javascript">
 
-var isOffline = 'onLine' in navigator && !navigator.onLine;
+var internet_status = window.navigator.onLine;
 
+alert(internet_status);
 
 jQuery(document).ready(function(){
 	
@@ -32,8 +33,7 @@ jQuery(document).ready(function(){
 	 }		
 	 
 	 
-	 checkConnection();
-	
+	 	
 	setTimeout(function(){
 		
 		var device_id = jQuery('#device_id').val();		
