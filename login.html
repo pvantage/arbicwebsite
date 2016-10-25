@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>hcwcbmoh</title>
+<link href="css/style.css" type="text/css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet"> 
+<script src="js/jquery.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+<script type="text/javascript" src="js/config.js"></script>
+<script type="text/javascript">
+var isOffline = 'onLine' in navigator && !navigator.onLine;
+
+jQuery(document).ready(function(){
+	
+	jQuery( document ).on( "mobileinit", function() {
+		jQuery.mobile.allowCrossDomainPages = true;
+	});
+	
+	var contentType ="application/x-www-form-urlencoded; charset=utf-8";
+	
+    if(window.XDomainRequest){contentType = "text/plain";}
+	jQuery.support.cors = true;	
+	
+	if(user_id > 0)
+	{
+		window.location = 'index.html';	
+	}	
+	
+	
+	jQuery("#account-login").on('click', function(e){
+		
+			var login_url = siteurl + '/api/account_login.php';		
+		
+			jQuery.ajax({ 
+			 type: 'POST',  
+			 url: login_url,  
+			 dataType: 'json',  
+			 data: jQuery('#loginform :input'),  
+			 crossDomain: true, 
+			beforeSend: function() {
+        			jQuery('#account-login').addClass('disable');
+					//$('#account-login').attr('disabled', true);
+			},			 	
+			 complete: function() {				
+				jQuery('#account-login').removeClass('disable');
+				//$('#account-login').attr('disabled', false);
+				
+			 },
+			 success: function(data) { 	
+			 	jQuery("#loginform").removeClass('errorinput');
+				jQuery("#loginform .error").remove();
+			 	
+					if(data['success'])
+					{	 	
+						localStorage.setItem('user_id', data['success']);
+						window.location = 'index.html';
+					}
+					
+					if(data['error'])
+					{	 	
+						if(data['error']['username'])
+						{	 	
+							jQuery("#user_login").addClass('errorinput');
+						}
+						
+						if(data['error']['password'])
+						{	 	
+							jQuery("#user_pass").addClass('errorinput');
+						}
+						
+						if(data['error']['invalidauth'])
+						{	 	
+							jQuery("#account-login").after('<span class="error">&nbsp;&nbsp;' + data['error']['invalidauth'] + '</span>');
+						}
+					}
+			 	}
+		   });
+		
+			
+	});	
+});		
+</script>
+</head>
+<body>
+<div class="wrapper">
+	<header>
+	<div class="logo-part"><img src="images/logo.png" /></div>
+	<div class="sub_header">
+	 <div class="heading">
+		<h2>Account Log in </h2>
+		</div>
+	</div>
+	</header>	
+	<div class="content-blk">
+		<div class="container">
+			<div class="inner-content">
+			<div id="loginform">
+			
+			<p class="login-username">
+				<label for="user_login"><span class="required">*</span> Username</label>
+				<input name="user_login" id="user_login" class="input" type="text">
+			</p>
+			<p class="login-password">
+				<label for="user_pass"><span class="required">*</span> Password</label>
+				<input name="user_pass" id="user_pass" class="input"  type="password">
+			</p>
+			<a class="lost-pass-link" href="#" title="Lost Password">Lost your password?</a>			
+			<p class="login-submit">
+				<input name="wp-submit" id="account-login" class="button-primary" value="Log In" type="button">	
+                	
+			</p>
+			
+		</div>
+
+			</div>
+		</div>
+	</div>	
+</div>
+<footer>
+<div class="container" id="footer_links">
+<a class="login" href="login.html">Login </a>
+<a class="signup" href="register.html">Sign Up</a>	
+</div>
+</footer>
+</body>
+</html>

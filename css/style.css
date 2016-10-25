@@ -51,7 +51,7 @@ color: white !important;
   width: 100%;
   float: left;
 }
-.inner-content #wp-submit.button-primary {
+.inner-content .button-primary {
   background: rgba(255, 186, 6, 0.95) none repeat scroll 0 0 !important;
   border: medium none;
   color: #000;
@@ -61,6 +61,11 @@ color: white !important;
   padding: 10px 20px;
   width: 40%;
 }
+
+.inner-content .button-primary.disable{ opacity:0.5;}
+.error{color:#F00;}
+
+.inner-content #loginform .errorinput{ border:1px solid #F00;}
 .inner-content #loginform p {
   float: left;
   line-height: 33px;
@@ -117,6 +122,9 @@ header {
   padding: 18px !important;
   width: 100%;
 }
+
+select option { padding: 0 5px;}
+
 .heading h2 {
   color: #fff;
   font-family: "Raleway",sans-serif;
@@ -436,6 +444,8 @@ footer {
   padding: 10px 20px;
   width: 40%;
 }
+
+.required{ color:#F00;}
 /*****************************responsive startss*********************************/
 @media(max-width: 1024px){
 

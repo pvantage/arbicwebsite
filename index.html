@@ -26,9 +26,6 @@ jQuery(document).ready(function(){
     if(window.XDomainRequest){contentType = "text/plain";}
 	jQuery.support.cors = true;	
 	
-	
-	var device_id = jQuery('#device_id').val();	
-	
 	if (localStorage.getItem("inventors") !== null) {
 			   
 			   jQuery("#inventors").html(localStorage.getItem('inventors'));
@@ -46,7 +43,7 @@ jQuery(document).ready(function(){
 			 type: 'POST',  
 			 url: url,  
 			 dataType: 'json',  
-			 data: {device_id:device_id, visiter_id:visiter_id},  
+			 data: {visiter_id:user_id},  
 			 crossDomain: true,  			 	
 			 complete: function() {
 				
@@ -105,11 +102,9 @@ jQuery(document).ready(function(){
 		
 		}	
 		
-		if(!isOffline)
-		{				
-			loadInventors();
-		}
-				
+						
+		loadInventors();
+						
 	 },500);  
 });	
 	
@@ -140,17 +135,18 @@ jQuery(document).ready(function(){
 	</div>	
 </div>
 <footer>
-<div class="container">
-<a class="login" href="#">Login </a>
-<a class="signup" href="#">Sign Up</a>	
+<div class="container" id="footer_links">
+<a class="login" href="login.html">Login </a>
+<a class="signup" href="register.html">Sign Up</a>	
 </div>
 </footer>
 </body>
 <script type="text/javascript">
 jQuery(document).ready(function(e) {
+	
     if(user_id > 0)
-	{
-		jQuery(".signup").hide();	
+	{		
+		jQuery("#footer_links").html('<a class="login logout" onclick="accountLogout(user_id);" href="javascript:void(0);">Log Out </a>');	
 	}
 });
 </script>

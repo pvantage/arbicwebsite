@@ -41,8 +41,7 @@ jQuery(document).ready(function(){
 			   jQuery("#inventor_name").html(localStorage.getItem(get_inventor_name));
 	 }
 	
-	if(!isOffline){
-		
+			
 		var url = siteurl+'/api/courses.php';
 			jQuery.ajax({ 
 			 type: 'POST',  
@@ -64,9 +63,7 @@ jQuery(document).ready(function(){
 								localStorage.setItem('course_list_' + inventor_id, data['courses']);
 						}
 			 	}
-		   });
-		   
-		} 			
+		   });	
 	
 });		
 </script>
@@ -86,7 +83,19 @@ jQuery(document).ready(function(){
   </div>  
 </div>
 <footer>
-  <div class="container"> <a class="login" href="#">Login </a> <a class="signup" href="#">Sign Up</a> </div>
+<div class="container" id="footer_links">
+<a class="login" href="login.html">Login </a>
+<a class="signup" href="register.html">Sign Up</a>	
+</div>
 </footer>
 </body>
+<script type="text/javascript">
+jQuery(document).ready(function(e) {
+	
+    if(user_id > 0)
+	{		
+		jQuery("#footer_links").html('<a class="login logout" href="javascript:void(0);">Log Out </a>');	
+	}
+});
+</script>
 </html>

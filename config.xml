@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
     <widget xmlns = "http://www.w3.org/ns/widgets"  xmlns:gap = "http://phonegap.com/ns/1.0"  id = "hcwcbmoh.com"  versionCode = "1" version = "1.0.0" > 
 
-    <name>Arabic Course App</name>
+    <name>Hcwcbmoh</name>
 
-    <description>Arabic Course App</description>
+    <description>Hcwcbmoh</description>
 
     <author href="http://www.vantagewebtech.com" email="vantage.krishna@gmail.com">Krishna Kumar</author>
 	<preference name="orientation" value="portrait" />
 	<preference name="prerendered-icon" value="true" />
-	<preference name="deployment-target" value="7.0" />	
-	<gap:plugin name="cordova-plugin-x-socialsharing" source="npm" />
+	<preference name="deployment-target" value="7.0" />		
 	<plugin name="cordova-plugin-device" spec="1.0.1" source="pgb" />	
 	<icon gap:platform="webos" src="icons/ios/icon-180.png" />
 	<icon src="images/mobi_icon.jpg" gap:platform="android" gap:density="ldpi" />
