@@ -1,190 +1,306 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>hcwcbmoh</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <link href="css/style.css" type="text/css" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500" rel="stylesheet"> 
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet"> 
+<link href="style.css" type="text/css" rel="stylesheet" />
+<link href="css/main.css" type="text/css" rel="stylesheet" />
+<style>
+@import 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700';
+</style>
 <script src="js/jquery.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-<script type="text/javascript" src="js/config.js"></script>
-<script type="text/javascript">
 
-var internet_status = window.navigator.onLine;
+<link rel="stylesheet" href="css/bootstrap.min.css"/>
+<script src="js/bootstrap.min.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+<script type="text/javascript" charset="utf-8" src="PushPluginProxy.js"></script>
+<script type="text/javascript" src="js/config.js"></script>
+<script type="text/javascript" src="js/validate.js"></script>
+<script>
+
+//localStorage.clear();
+jQuery(document).ready(function(){
+    jQuery(".menu_box").click(function(){
+        jQuery(".menusection").toggle();
+    });
+});
 
 
 jQuery(document).ready(function(){
 	
+	
 	jQuery( document ).on( "mobileinit", function() {
 		jQuery.mobile.allowCrossDomainPages = true;
 	});
-	
 	var contentType ="application/x-www-form-urlencoded; charset=utf-8";
-	
     if(window.XDomainRequest){contentType = "text/plain";}
-	jQuery.support.cors = true;	
+	jQuery.support.cors = true;
+	jQuery('#loginuser').validate();
 	
-	if (localStorage.getItem("inventors") !== null) {
-			   
-			   jQuery("#inventors").html(localStorage.getItem('inventors'));
-	 }		
-	 
-	 
-	 	
-	setTimeout(function(){
+	if(localStorage.getItem('launchimage') == null){
+		var html='<div class="bodyoverlay"></div><div class="preloaderimg"></div>';
+		jQuery('body').append(html);
+		setTimeout(function(){
+			jQuery('body .bodyoverlay').remove();
+			jQuery('body .preloaderimg').remove();
+			localStorage.setItem('launchimage', 1);
+		},2000);
+	}
+	jQuery('#loginuser').submit( function(){	
 		
-		var device_id = jQuery('#device_id').val();		
-		var url = siteurl+'/api/get_inventor.php';		
-				
-		loadInventors = function(){
-			
-			
-			jQuery.ajax({ 
-			 type: 'POST',  
-			 url: url,  
-			 dataType: 'json',  
-			 data: {visiter_id:user_id},  
-			 crossDomain: true,  			 	
-			 complete: function() {
-				
-				jQuery('body .preloader').remove();
-				jQuery('body .bodyoverlay').remove();
-				
-			 },
-			 success: function(data) { 		
-			 				if(data['inventors'])
-							{	 	
-								jQuery("#inventors").html(data['inventors']);
-								localStorage.setItem('inventors', data['inventors']);
-							}
-			 		}
-		   });
-		   
-		   
-		   if (localStorage.getItem("allcourses") !== null) {
-			   
-			   jQuery("#selected_course").html(localStorage.getItem('allcourses'));
-		   }
-		   
-		   
-		   
-		   var courseurl = siteurl+'/api/course-dropdown.php';		
-		   jQuery.ajax({ 
-			 type: 'POST',  
-			 url: courseurl,  
-			 dataType: 'json',  
-			 data: {device_id:device_id},  
-			 crossDomain: true,  			 	
-			 complete: function() {
-				
-				jQuery('body .preloader').remove();
-				jQuery('body .bodyoverlay').remove();
-				
-			 },
-			 success: function(data) { 		
-					if(data['courses'])
-					{	 	
-						var option_val = '<option value="">--- Please select a course ----</option>';
-						jQuery(data['courses']).each(function(i){
-							
-							var page_url = '';
-						   if(parseInt(data['courses'][i]['ID']) == 5299)
-							{
-								page_url = 'biostatistics.html';	
-							}else if(parseInt(data['courses'][i]['ID']) == 5264)
-							{
-								page_url = 'climate-change.html';	
-							}else if(parseInt(data['courses'][i]['ID']) == 6798)
-							{
-								page_url = 'epi-info.html';	
-							}else if(parseInt(data['courses'][i]['ID']) == 5227)
-							{
-								page_url = 'epidemiological-surveillance-of-public-health.html';	
-							}else if(parseInt(data['courses'][i]['ID']) == 5286)
-							{
-								page_url = 'epidemiology.html';	
-							}else if(parseInt(data['courses'][i]['ID']) == 5319)
-							{
-								page_url = 'spss-training-course.html';	
-							}
-							
-							option_val += '<option value="' + page_url + '">' + data['courses'][i]['name'] + '</option>';
-							
-						});
-						
-						jQuery("#selected_course").html(option_val);
-						localStorage.setItem('allcourses', option_val);
-					}
-			 	}
-				
-				
-		   });
-		   
-		
-		}	
-		
-		if(internet_status)
-		{				
-			loadInventors();
-		}
-						
-	 },500); 
-	 
-	 jQuery("#selected_course").on('change', function(){
-		 
-		 var goto_page = jQuery(this).val();
-		
-			if(goto_page != "")
+		var user_login=jQuery('#username').val();
+		var user_pass=jQuery('#pwd').val();
+		var url=siteurl+'/api/register.php';
+		var error=false;
+		jQuery('#loginuser input').each(function(){
+			if(jQuery(this).hasClass('error'))
 			{
-				window.location = goto_page;
+				error=true;
 			}
+		});
+		if(!error)
+		{
+			 jQuery.ajax({  
+			 type: 'POST',  
+			 url: url,           
+			 dataType: 'json',  
+			 data: {email:user_login,password:user_pass,account_type:'register_via_app'}, 
+			 beforeSend: function() {
+			 	jQuery('body .bodyoverlay').remove();
+				jQuery('body .preloader').remove();
+				var html='<div class="bodyoverlay"></div><div class="preloader"></div>';
+				jQuery('body').append(html);
+			 },		
+			 complete: function() {
+			 	//jQuery('body .bodyoverlay').remove();
+				jQuery('body .preloader').remove();
+			 }, 
+			 crossDomain: true,  
+			 success: function(res) { 
+				if(res['success'][0]['message']=='You have login successfully' || res['success'][0]['message']=='You have registered successfully')
+				{
+					localStorage.setItem('displayname',user_login);
+					localStorage.setItem('displayimg','');
+					window.location ='instruction.html?uid='+res['success'][0]['user_id'];
+				
+					//localStorage.setItem('userInfo', res['success']['userid']);
+					//window.location ='category.html';
+				}else if(res['success'][0]['message']=='Invalid email or password'){				
+					jQuery('body .bodyoverlay').remove();
+					jQuery('body .popupbox').remove();
+					var html='<div class="bodyoverlay"></div><div class="popupbox errorbox"><div class="popupimg"><img src="images/error.png" /></div><h1 class="success">ERROR</h1><h1>'+res['checklogin']['error']+'</h1><button class="okbox">OK</button></div>';
+					jQuery('body').append(html);
+					
+					jQuery('.okbox').click(function(){
+						jQuery('body .bodyoverlay').remove();
+						jQuery('body .popupbox').remove();
+					});
+					
+				}
+				else
+				{
+					alert('Server error');
+				}
+				return false; 
+			 },  
+			 error: function(response, d, a){
+				jQuery('body .bodyoverlay').remove();
+				jQuery('body .popupbox').remove();
+				var html='<div class="bodyoverlay"></div><div class="popupbox errorbox"><div class="popupimg"><img src="images/error.png" /></div><h1 class="success">ERROR</h1><h1>Server Error.</h1><button class="okbox">OK</button></div>';
+				jQuery('body').append(html);
+				
+				jQuery('.okbox').click(function(){
+					jQuery('body .bodyoverlay').remove();
+					jQuery('body .popupbox').remove();
+				});
+				return false; 
+			 }
+			        
+		   });
+		 }	
+		 return false;   
 	});
-	  
-});	
-
 	
+	jQuery('#forgotusr').validate();
+	jQuery('#forgotusr').submit( function(){		
+		var forgotemail=jQuery('#email').val();
+		var url=siteurl+'/api/forgot-password.php';	
+		var error=false;
+		jQuery('#forgotusr input').each(function(){
+			if(jQuery(this).hasClass('error'))
+			{
+				error=true;
+			}
+		});
+		if(!error)
+		{
+			 jQuery.ajax({  
+			 type: 'POST',  
+			 url: url,           
+			 dataType: 'json',  
+			 data: {email:forgotemail}, 
+			 beforeSend: function() {
+				jQuery('body .bodyoverlay').remove();
+				jQuery('body .preloader').remove();
+				var html='<div class="bodyoverlay"></div><div class="preloader"></div>';
+				jQuery('body').append(html);					
+			 },		
+			 complete: function() {
+				jQuery('body .bodyoverlay').remove();
+				jQuery('body .preloader').remove();				
+			 }, 
+			 crossDomain: true,  
+			 success: function(res) {  
+				if(res['success'][0]['message']=='Sorry, email address not found.' || res['success'][0]['message']=='Something is wrong.')
+				{
+					jQuery('body .bodyoverlay').remove();
+					jQuery('body .popupbox').remove();
+					var html='<div class="bodyoverlay"></div><div class="popupbox errorbox"><div class="popupimg"><img src="images/error.png" /></div><h1 class="success">ERROR</h1><h1>'+res['success'][0]['message']+'</h1><button class="okbox">OK</button></div>';
+					jQuery('body').append(html);
+					
+				}
+				else if(res['success'][0]['message']=='Password has been sent to your registered email.')
+				{
+					jQuery('body .bodyoverlay').remove();
+					jQuery('body .popupbox').remove();
+					var html='<div class="bodyoverlay"></div><div class="popupbox"><div class="popupimg"><img src="images/pop.png" /></div><h1 class="success">SUCCESS</h1><h1>'+res['success'][0]['message']+'</h1><button class="okbox">OK</button></div>';
+					jQuery('body').append(html);
+					
+				}
+				jQuery('.okbox').click(function(){
+					jQuery('body .bodyoverlay').remove();
+					jQuery('body .popupbox').remove();
+				}); 
+				return false;
+			 } ,  
+			 error: function(response, d, a){
+				jQuery('body .bodyoverlay').remove();
+				jQuery('body .popupbox').remove();
+				var html='<div class="bodyoverlay"></div><div class="popupbox errorbox"><div class="popupimg"><img src="images/error.png" /></div><h1 class="success">ERROR</h1><h1>Server Error.</h1><button class="okbox">OK</button></div>';
+				jQuery('body').append(html);
+				
+				jQuery('.okbox').click(function(){
+					jQuery('body .bodyoverlay').remove();
+					jQuery('body .popupbox').remove();
+				});
+				return false; 
+			 }
+			        
+		   });
+		 }	
+		 return false;   
+	});
+	jQuery('a.forgotpwd').click(function(){
+		jQuery('.loginform').hide();
+		jQuery('.forgotform').show();
+	});
+	jQuery('a.loginp').click(function(){
+		jQuery('.forgotform').hide();
+		jQuery('.loginform').show();
+		
+	});
+	
+	
+});
+
 </script>
+<title>Synopsis</title>
 </head>
 <body>
 <div class="wrapper">
-	<header>
-	<div class="logo-part"><img src="images/logo.png" /></div>
-	<div class="sub_header">
-	<div class="container">
-		<div class="search-course-description">
-		<select class="home-select_course" id="selected_course"> 
-    		<option value="">--- Please select a course ----</option>		
-		</select>
-		</div>
-		</div>
-		<div class="heading">
-		<h2><img src="images/icon1.png">CHOOSE YOUR INSTRUCTOR</h2>
-		</div>
-	</div>
-	</header>
-	
-	<div class="content-blk">
-		<div class="container">
-			<div id="inventors" class="inner-content"></div>
-		</div>
-	</div>	
+  <header>
+    <div class="header_box">
+      <div class="header_logo_section">
+        <div class="menu_box"> <a href="#"><img class="mnu" src="images/menu.png"/>
+          <div class="logobox"> <img src="images/logo.png" /> </div>
+          </a></div>
+      </div>
+      <div class="clr"></div>
+    </div>
+    <div class="container menusection">
+      <div class="category_section">
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#home">Categories</a></li>
+          <li><a href="#menu1">Settings</a></li>
+        </ul>
+        <div class="tab-content">
+          <script type="text/javascript">document.write(sitemenus());</script>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="container">
+    <div class="login_section">
+      <div class="login_form loginform">
+	  <form name="loginuser" id="loginuser" action="" method="post">
+        <h1>Login Into Your Account</h1>
+        <div class="input_box">
+		  <input type="text" class="required email" name="username" id="username"  placeholder="Email Id">
+        </div>
+        <div class="input_box">
+		  <input type="password" class="required form-control pwd" name="pwd" id="pwd"  placeholder="Password">
+        </div>
+        <div class="input_box">
+          <button class="sign_in">Sign In</button>
+        </div>
+        <div class="input_box forgotpwd"> <a href="#" class="forgotpwd">Forgot your <span>Password</span> ?</a> </div>
+		</form>
+      </div>
+	  <div class="login_form forgotform" style="display:none;">
+	  	<form name="forgotusr" id="forgotusr" action="" method="post">
+        <h1>Forgot Your Password</h1>
+        <div class="input_box">
+          <input type="text" class="required email" name="email" id="email" placeholder="Enter Your Email">
+        </div>
+        <div class="input_box">
+          <button class="sign_in">Get Password</button>
+        </div>
+        <div class="input_box forgotpwd"> <a href="#" class="loginp">Login</a> </div>
+		</form>
+      </div>
+      <div class="loginwith">
+        <h1>Log in with</h1>
+       
+		<ul class="login_boxes">
+          <li class="l-fb"><a href="#" id="startfblogin"><span><img src="images/ac_fb.png"/></span>
+		  Connect with Facebook</a></li>
+          <li class="l-g"><a href="#" id="startgplogin"><span><img src="images/ac_gplush.png"/></span>
+		  Connect with Google</a></li>
+          <li class="l-tw"><a href="#" id="starttwitterlogin"><span><img src="images/ac_twitter.png"/></span>
+		  Connect with Twitter</a></li>
+        </ul>
+      </div>
+	  
+    </div>
+    <div class="skip"><a href="instruction.html">Skip</a></div>
+
+
+
+ 
+
+    
+  </div>
+  <!--<footer>
+    <div class="footer_section">
+      <hr>
+      <div class="ftr_logo"><img src="images/footerlogo.png"/></div>
+    </div>
+  </footer>-->
 </div>
-<footer>
-<div class="container" id="footer_links">
-<a class="login" href="login.html">Login </a>
-<a class="signup" href="register.html">Sign Up</a>	
-</div>
-</footer>
-</body>
-<script type="text/javascript">
-jQuery(document).ready(function(e) {
+
+<script>
+jQuery(document).ready(function(){
+    jQuery(".nav-tabs a").click(function(){
+        jQuery(this).tab('show');
+    });
+	jQuery('.new_detail_section, .new_des_content').click(function(){
+        jQuery("header").toggle();
+    });
 	
-    if(user_id > 0)
-	{		
-		jQuery("#footer_links").html('<a class="login logout" onclick="accountLogout(user_id);" href="javascript:void(0);">Log Out </a>');	
-	}
+	
 });
 </script>
+</body>
 </html>
