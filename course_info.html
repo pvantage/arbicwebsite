@@ -30,7 +30,11 @@ jQuery(document).ready(function(){
 			   
 		jQuery(".wrapper").html(localStorage.getItem(get_course_info));
 		jQuery('.accordian-content ul').addClass('ul-document');
-		jQuery('.accordian-content ul a').click(function(){
+		if(jQuery('.documentlist ul').length<=0)
+		{
+			jQuery('.documentlist').addClass('showdoclist');
+		}
+		jQuery('.accordian-content a').click(function(){
 			cordova.InAppBrowser.open(jQuery(this).attr('href'),'_blank','location=no');
 			return false;
 		});
@@ -58,7 +62,11 @@ jQuery(document).ready(function(){
 						jQuery(".wrapper").html(data['course']);
 						jQuery('.accordian-content ul').addClass('ul-document');
 						localStorage.setItem('course_name_' + course_id, data['course']);
-						jQuery('.accordian-content ul a').click(function(){
+						if(jQuery('.documentlist ul').length<=0)
+						{
+							jQuery('.documentlist').addClass('showdoclist');
+						}
+						jQuery('.accordian-content a').click(function(){
 							cordova.InAppBrowser.open(jQuery(this).attr('href'),'_blank','location=no');
 							return false;
 						});
