@@ -32,6 +32,7 @@ jQuery(document).ready(function(){
 		jQuery('.accordian-content ul').addClass('ul-document');
 		jQuery('.accordian-content ul a').click(function(){
 			cordova.InAppBrowser.open(jQuery(this).attr('href'),'_blank','location=no');
+			return false;
 		});
 	 }
 	 
@@ -59,6 +60,7 @@ jQuery(document).ready(function(){
 						localStorage.setItem('course_name_' + course_id, data['course']);
 						jQuery('.accordian-content ul a').click(function(){
 							cordova.InAppBrowser.open(jQuery(this).attr('href'),'_blank','location=no');
+							return false;
 						});
 					}
 			 	}
