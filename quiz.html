@@ -60,6 +60,10 @@ jQuery(document).ready(function(){
 								cordova.InAppBrowser.open('http://www.hcwcbmoh.com/?appuserid='+user_id+'&appqid='+qid,'_blank','location=no');
 								//window.location='http://www.hcwcbmoh.com/?appuserid='+user_id+'&appqid='+qid;
 							}
+							else
+							{
+								alert('Please login first');
+							}
 						});
 					}
 			 	}
@@ -101,7 +105,7 @@ jQuery(document).ready(function(e) {
 	
     if(user_id > 0)
 	{		
-		jQuery("#footer_links").html('<a class="login logout" href="javascript:void(0);">Log Out </a>');	
+		jQuery("#footer_links").html('<a class="login logout" onclick="accountLogout(user_id);" href="javascript:void(0);">Log Out </a>');	
 	}
 });
 </script>

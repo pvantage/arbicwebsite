@@ -101,7 +101,7 @@ jQuery(document).ready(function(e) {
 	
     if(user_id > 0)
 	{		
-		jQuery("#footer_links").html('<a class="login logout" href="javascript:void(0);">Log Out </a>');	
+		jQuery("#footer_links").html('<a class="login logout" onclick="accountLogout(user_id);" href="javascript:void(0);">Log Out </a>');	
 	}
 });
 </script>
