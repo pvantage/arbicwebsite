@@ -28,7 +28,7 @@ jQuery(document).ready(function(){
 		window.location = 'index.html';	
 	}	
 	
-	
+	var course_id = gup('course_id');
 	jQuery("#account-login").on('click', function(e){
 		
 			var login_url = siteurl + '/api/account_login.php';		
@@ -55,7 +55,13 @@ jQuery(document).ready(function(){
 					if(data['success'])
 					{	 	
 						localStorage.setItem('user_id', data['success']);
-						window.location = 'index.html';
+						if(typeof course_id!='undefined'){
+							window.location = 'quiz.html?course_id='+course_id;
+						}
+						else
+						{
+							window.location = 'index.html';
+						}
 					}
 					
 					if(data['error'])
