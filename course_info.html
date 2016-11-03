@@ -28,7 +28,11 @@ jQuery(document).ready(function(){
 	
 	if (localStorage.getItem(get_course_info) !== null) {
 			   
-			   jQuery(".wrapper").html(localStorage.getItem(get_course_info));
+		jQuery(".wrapper").html(localStorage.getItem(get_course_info));
+		jQuery('.accordian-content ul').addClass('ul-document');
+		jQuery('.accordian-content ul a').click(function(){
+			cordova.InAppBrowser.open(jQuery(this).attr('href'),'_blank','location=no');
+		});
 	 }
 	 
 	 
@@ -54,7 +58,7 @@ jQuery(document).ready(function(){
 						jQuery('.accordian-content ul').addClass('ul-document');
 						localStorage.setItem('course_name_' + course_id, data['course']);
 						jQuery('.accordian-content ul a').click(function(){
-							cordova.InAppBrowser.open(jQuery(this).attr('href'),'location=no');
+							cordova.InAppBrowser.open(jQuery(this).attr('href'),'_blank','location=no');
 						});
 					}
 			 	}
