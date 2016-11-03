@@ -57,8 +57,8 @@ jQuery(document).ready(function(){
 							var qid=jQuery(this).attr('coords');
 							if(user_id > 0)
 							{
-								//cordova.InAppBrowser.open('http://www.hcwcbmoh.com/?appuserid='+user_id+'&appqid='+qid+'&appcourse_id='+course_id,'_blank','location=no');
-								window.location='http://www.hcwcbmoh.com/?appuserid='+user_id+'&appqid='+qid+'&appcourse_id='+course_id;
+								cordova.InAppBrowser.open('http://www.hcwcbmoh.com/?appuserid='+user_id+'&appqid='+qid+'&appcourse_id='+course_id,'_blank','location=no');
+								//window.location='http://www.hcwcbmoh.com/?appuserid='+user_id+'&appqid='+qid+'&appcourse_id='+course_id;
 							}
 							else
 							{
