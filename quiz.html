@@ -52,7 +52,9 @@ jQuery(document).ready(function(){
 					if(data['quiz'])
 					{	 	
 						jQuery(".courses-description").html(data['quiz']);
-						
+						if(user_id<=0){
+							jQuery(".courses-description").append('<div class="logregister">Please <a href="login.html">Login </a>/<a href="register.html">Sign Up</a> to unlock the course.</div>');
+						}
 						jQuery('.courses-description a.quizlink').click(function(){
 							var qid=jQuery(this).attr('coords');
 							if(user_id > 0)
