@@ -10,6 +10,7 @@
 <script src="js/jquery.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 <script type="text/javascript" src="js/config.js"></script>
+<script type="text/javascript" src="http://www.hcwcbmoh.com/wp-content/plugins/quiz-master-next/js/qmn_quiz.js?ver=4.5.4"></script>
 <script type="text/javascript">
 jQuery(document).ready(function(){
 	
@@ -37,7 +38,7 @@ jQuery(document).ready(function(){
 			 type: 'POST',  
 			 url: url,  
 			 dataType: 'json',  
-			 data: {course_id:course_id},  
+			 data: {course_id:course_id,user_id:user_id},  
 			 crossDomain: true,  			 	
 			 complete: function() {				
 				jQuery('body .preloader').remove();
@@ -53,7 +54,7 @@ jQuery(document).ready(function(){
 					{	 	
 						jQuery(".courses-description").html(data['quiz']);
 						if(user_id<=0){
-							jQuery(".courses-description").append('<div class="logregister">Please <a href="login.html">Login </a>/<a href="register.html">Sign Up</a> to unlock the course.</div>');
+							jQuery(".courses-description").append('<div class="logregister">Please <a href="login.html">login </a>/<a href="register.html">sign up</a> to unlock the test.</div>');
 						}
 						jQuery('.courses-description a.quizlink').click(function(){
 							var qid=jQuery(this).attr('coords');

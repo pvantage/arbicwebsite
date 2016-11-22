@@ -49,7 +49,7 @@ jQuery(document).ready(function(){
 			 type: 'POST',  
 			 url: url,  
 			 dataType: 'json',  
-			 data: {post_id:course_id},  
+			 data: {post_id:course_id,user_id:user_id},  
 			 crossDomain: true,  			 	
 			 complete: function() {				
 				jQuery('body .preloader').remove();
@@ -70,6 +70,30 @@ jQuery(document).ready(function(){
 							cordova.InAppBrowser.open(jQuery(this).attr('href'),'_blank','location=no');
 							return false;
 						});
+						
+						jQuery('form.qmn_quiz_form').submit(function(){
+							var quizData=$(this).serialize();
+							jQuery.ajax({
+								type : 'POST',
+								url : siteurl+'/wp-admin/admin-ajax.php',
+								data : {
+									quizData:quizData,
+									action : 'qmn_process_quiz'
+								},
+								dataType: 'json',
+								crossDomain: true,  			 	
+							 complete: function() {				
+								jQuery('body .preloader').remove();
+								jQuery('body .bodyoverlay').remove();
+								
+							 },
+							 success: function(res) {
+							 	jQuery('.surverform').html(res.display);
+							 }
+							});
+							return false;
+						});
+						
 					}
 			 	}
 		   });	
