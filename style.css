@@ -24,6 +24,13 @@ text-decoration: none;
 body li{
   list-style-type: none;
 }
+.inner-content .button-primary {
+    background: red; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#FFBE12, #FFBE12) !important; /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#FFBE12, #FFBE12)!important; ; /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#FFBE12, #FFBE12)!important; ; /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#FFBE12, #FFBE12)!important; ; /* Standard syntax */
+}
 
 @media screen and (min-color-index:0) 
 and(-webkit-min-device-pixel-ratio:0) { @media
