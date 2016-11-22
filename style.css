@@ -191,7 +191,7 @@ select option { padding: 0 5px;}
 .heading h2 {
   color: #fff;
   font-family: "Raleway",sans-serif;
-  font-size: 34px;
+  font-size: 28px;
   font-weight:400;
 }
 .heading img {
@@ -465,16 +465,17 @@ footer {
   color: #fff;
   float: left;
   font-family: "Open Sans",sans-serif;
-  font-size: 30px;
+  font-size:27px;
   font-weight: 600;
   width: auto;
+  line-height:28px;
 }
 .toptext {
   box-sizing: border-box;
   float: left;
   padding: 0 10px;
   position: absolute;
-  top: 35%;
+  top: 25%;
   width: 100%;
 }
 .inner-content .toptext h4 {
@@ -594,6 +595,7 @@ font-size: 20px;
 }
 }
 @media(max-width: 480px){
+
 .app-loin {
   float: left;
   margin: 0 auto;
@@ -601,7 +603,7 @@ font-size: 20px;
 }
 
 .heading h2 {
- font-size: 30px;
+ font-size: 28px;
 }
 .inner-content h4 {
  font-size: 18px;
