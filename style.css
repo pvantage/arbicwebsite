@@ -553,6 +553,8 @@ footer {
   padding-left: 12px;
   width: auto;
 }
+.inner-content .button-primary{-webkit-appearance: none !important;}
+.registaration-blk .submit .button.button-primary.button-large{-webkit-appearance: none !important;}
 /*****************************responsive startss*********************************/
 @media(max-width: 1024px){
 
