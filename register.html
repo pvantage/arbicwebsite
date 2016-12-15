@@ -10,6 +10,7 @@
 <script src="js/jquery.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 <script type="text/javascript" src="js/config.js"></script>
+<script type="text/javascript" src="js/validate.js"></script>
 <script type="text/javascript">
 var isOffline = 'onLine' in navigator && !navigator.onLine;
 
@@ -28,6 +29,90 @@ jQuery(document).ready(function(){
 	{
 		window.location = 'index.html';	
 	}
+	jQuery.validator.addMethod("phoneStartingWith0", function(phone_number, element) {
+		phone_number = phone_number.replace(/\s+/g, ""); 
+		return this.optional(element) || phone_number.match(/^0\d{9,}$/);
+	}, "Phone number should start with 0");
+	jQuery('#student_register').validate({
+		  rules: {
+			pwd: "required",
+			pwd2: {
+			  equalTo: "#pwd"
+			},
+			email: "required",
+			email2: {
+			  equalTo: "#email"
+			}
+		  },
+		  messages:{
+			 pwd2: { 
+				 equalTo:"Confirm password must be same as password."
+			   },
+			email2: { 
+				 equalTo:"Confirm email must be same as email."
+			   }
+		 }
+		});
+	jQuery('#student_register').submit(function(){
+		var error=false;
+		jQuery('#student_register input,#student_register select').each(function(){
+			if(jQuery(this).hasClass('error'))
+			{
+				error=true;
+			}
+			if(!error)
+			{
+				var login_url = siteurl + '/api/account_register.php';		
+		
+				jQuery.ajax({ 
+				 type: 'POST',  
+				 url: login_url,  
+				 dataType: 'json',  
+				 data: jQuery('#student_register').serialize(),  
+				 crossDomain: true, 
+				beforeSend: function() {
+						jQuery('#wp-submit').addClass('disable');
+						//$('#account-login').attr('disabled', true);
+				},			 	
+				 complete: function() {				
+					jQuery('#wp-submit').removeClass('disable');
+					//$('#account-login').attr('disabled', false);
+					return false;
+				 },
+				 success: function(data) { 	
+					
+					if(data['errors'])
+					{
+						var errormsg='';
+						jQuery(data['errors']).each(function(index){
+							//alert(data['errors'][index]);
+							errormsg+='<span class="error">'+data['errors'][index]+'</span><br />';
+						});
+						jQuery('.msgdisplay').remove();
+						jQuery('.registaration-blk').prepend('<div class="msgdisplay">'+errormsg+'</div>');
+					}
+					else if(data['success'])
+					{
+						localStorage.setItem('user_id', data['success']['user_id']);
+						jQuery('.msgdisplay').remove();
+						jQuery('.registaration-blk').prepend('<div class="msgdisplay"><span class="success">'+data['success']['msg']+'</span></div>');
+						setTimeout(function(){
+							window.location = 'index.html';
+						},3000);
+					}
+					jQuery('html, body').animate({
+						scrollTop: 0
+					  }, 1000);
+
+					return false;
+					}
+			   });
+			   return false;
+			}
+			return false;
+		});
+		return false;
+	});
 });		
 </script>
 </head>
@@ -39,7 +124,7 @@ jQuery(document).ready(function(){
 	
 	<div class="sub_header">
 	 <div class="heading">
-		<h2><span class="badck-icon"><a href="javascript:void(0);" onclick="gotoBack();"><img src="images/back-icon.png"></a></span><img src="images/icon2.png">REGISTRATION</h2>
+		<h2><span class="badck-icon"><a href="javascript:void(0);" onClick="gotoBack();"><img src="images/back-icon.png"></a></span><img src="images/icon2.png">REGISTRATION</h2>
 		</div>
 	</div>
 	</header>
@@ -52,23 +137,23 @@ jQuery(document).ready(function(){
     
         		<div class="row">
 						<label control-label"><span class="req">*</span><img src="images/icon3.png"></label>
-						<div class="restinput"><input class="form-control" placeholder="Please enter full name" name="stud_name" id="stud_name" value="" type="text"></div>
+						<div class="restinput"><input class="form-control required" placeholder="Please enter full name" name="stud_name" id="stud_name" value="" type="text"></div>
 					</div> 
 					
 					<div class="row">
 						<label control-label"><span class="req">*</span><img src="images/icon4.png"></label>
-						<div class="restinput"><input maxlength="15" placeholder="Please enter SCFHC Number" class="form-control" name="scfhc_number" id="scfhc_number" value="" type="text"></div>
+						<div class="restinput"><input maxlength="15" placeholder="Please enter SCFHC Number" class="form-control required" name="scfhc_number" id="scfhc_number" value="" type="text"></div>
 					</div> 
 					
 					<div class="row">
 						<label class="control-label"><span class="req">*</span><img src="images/icon5.png"></label>
-						<div class="restinput"><input maxlength="10" placeholder="Please enter National/Iqama ID Number" class="form-control" name="nation_iqama_id_number" id="nation_iqama_id_number" value="" type="text"></div>
+						<div class="restinput"><input maxlength="10" placeholder="Please enter National/Iqama ID Number" class="form-control required" name="nation_iqama_id_number" id="nation_iqama_id_number" value="" type="text"></div>
 					</div> 
 					
 					<div class="row">
 						<label class="control-label"><span class="req">*</span><img src="images/icon6.png"></label>
 						<div class="restinput">
-						<select class="form-control" name="job_location" id="job_location">
+						<select class="form-control required" name="job_location" id="job_location">
 						<option value="">---- Please select job location ----</option>
 														
 								 <option value="52" >الرياض</option>
@@ -122,22 +207,34 @@ jQuery(document).ready(function(){
 					
 					<div class="row">
 						<label class="control-label"><span class="req">*</span> <img src="images/icon7.png"></label>
-						<div class="restinput"><input placeholder="Please enter specialty" class="form-control" name="stud_spl" id="stud_spl" value="" type="text"></div>
+						<div class="restinput"><input placeholder="Please enter specialty" class="form-control required" name="stud_spl" id="stud_spl" value="" type="text"></div>
 					</div> 
 					
 					<div class="row">
 						<label class="control-label"><span class="req">*</span><img src="images/icon8.png"></label>
-						<div class="restinput"><input maxlength="10" placeholder="0XXXXXXXXX" class="form-control" name="mobile_no" id="mobile_no" value="" type="text"></div>
+						<div class="restinput"><input maxlength="11" placeholder="0XXXXXXXXX" class="form-control required number phoneStartingWith0" name="mobile_no" id="mobile_no" value="" type="text"></div>
 					</div> 
 					
 					<div class="row">
 						<label class="control-label"><span class="req">*</span><img src="images/icon9.png"></label>
-						<div class="restinput"><input maxlength="50" class="form-control" placeholder="Please enter email address" name="email" id="email" value="" type="text"></div>
+						<div class="restinput"><input maxlength="50" class="form-control required email" placeholder="Please enter email address" name="email" id="email" value="" type="text"></div>
 					</div> 
+					<div class="row">
+						<label class="control-label"><span class="req">*</span><img src="images/icon9.png"></label>
+						<div class="restinput"><input maxlength="50" class="form-control required email" placeholder="Please enter confirm email address" name="email2" id="email2" value="" type="text"></div>
+					</div>
+					<div class="row">
+						<label class="control-label"><span class="req">*</span><img src="images/pwd.png"></label>
+						<div class="restinput"><input maxlength="50" class="form-control required" placeholder="Please enter password" name="pwd" id="pwd" value="" type="password"></div>
+					</div>
+					<div class="row">
+						<label class="control-label"><span class="req">*</span><img src="images/pwd.png"></label>
+						<div class="restinput"><input maxlength="50" class="form-control required" placeholder="Please enter confirm password" name="pwd2" id="pwd2" value="" type="password"></div>
+					</div>
 					
 					<div class="row">
 						<label class="control-label"><span class="req">*</span> <img src="images/icon10.png"></label>
-						<div class="restinput"><select class="form-control" name="stud_city" id="stud_city">
+						<div class="restinput"><select class="form-control required" name="stud_city" id="stud_city">
 							<option value="">---- Please Select a city ----</option>
 							
 															
@@ -192,7 +289,7 @@ jQuery(document).ready(function(){
 					
 					<div class="row">
 						<label class="control-label"><span class="req">*</span><img src="images/icon11.png"></label>
-						<div class="restinput"><select class="form-control" name="stud_program" id="stud_program">
+						<div class="restinput"><select class="form-control required" name="stud_program" id="stud_program">
 							<option value="">---- Please select a program----</option>
 							
 															<option value="6798">EPI Info</option>
@@ -232,7 +329,7 @@ jQuery(document).ready(function(){
 
 <footer>
 <div class="container">
-<a class="login" href="#">Login </a>
+<a class="login" href="login.html">Login </a>
 </div>
 </footer>	
 	
