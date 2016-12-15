@@ -555,6 +555,7 @@ footer {
 }
 .inner-content .button-primary{-webkit-appearance: none !important;}
 .registaration-blk .submit .button.button-primary.button-large{-webkit-appearance: none !important;}
+.app-curses .course-item .course-title{min-height: 77px;}
 /*****************************responsive startss*********************************/
 @media(max-width: 1024px){
 
