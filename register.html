@@ -80,7 +80,7 @@ jQuery(document).ready(function(){
 					return false;
 				 },
 				 success: function(data) { 	
-					
+					jQuery('.msgdisplay').remove();
 					if(data['errors'])
 					{
 						var errormsg='';
@@ -88,13 +88,12 @@ jQuery(document).ready(function(){
 							//alert(data['errors'][index]);
 							errormsg+='<span class="error">'+data['errors'][index]+'</span><br />';
 						});
-						jQuery('.msgdisplay').remove();
+						
 						jQuery('.registaration-blk').prepend('<div class="msgdisplay">'+errormsg+'</div>');
 					}
 					else if(data['success'])
 					{
 						localStorage.setItem('user_id', data['success']['user_id']);
-						jQuery('.msgdisplay').remove();
 						jQuery('.registaration-blk').prepend('<div class="msgdisplay"><span class="success">'+data['success']['msg']+'</span></div>');
 						setTimeout(function(){
 							window.location = 'index.html';

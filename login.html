@@ -78,7 +78,7 @@ jQuery(document).ready(function(){
 						
 						if(data['error']['invalidauth'])
 						{	 	
-							jQuery("#account-login").after('<span class="error">&nbsp;&nbsp;' + data['error']['invalidauth'] + '</span>');
+							jQuery("#account-login").after('<div class="clear"></div><span class="error">' + data['error']['invalidauth'] + '</span>');
 						}
 					}
 			 	}
@@ -113,7 +113,7 @@ jQuery(document).ready(function(){
 				<input name="user_pass" id="user_pass" class="input"  type="password" placeholder="Password">
 				
 			</p>
-			<p class="login-remember remberlogin"><label><input name="rememberme" id="rememberme" value="forever" type="checkbox"> Remember me</label>
+			<p class="login-remember remberlogin"><!--<label><input name="rememberme" id="rememberme" value="forever" type="checkbox"> Remember me</label>-->
 			<a class="lost-pass-link" href="forgot-password.html" title="Lost Password">Lost your password?</a>	</p>		
 			<p class="login-submit">
 				<input name="wp-submit" id="account-login" class="button-primary" value="Log In" type="button">	
