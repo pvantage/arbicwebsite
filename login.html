@@ -65,16 +65,20 @@ jQuery(document).ready(function(){
 					}
 					
 					if(data['error'])
-					{	 	
-						if(data['error']['username'])
-						{	 	
-							jQuery("#user_login").addClass('errorinput');
-						}
-						
+					{	
+					
 						if(data['error']['password'])
 						{	 	
 							jQuery("#user_pass").addClass('errorinput');
+							jQuery("#account-login").after('<div class="clear"></div><span class="error">' + data['error']['password'] + '</span>');
+						}	
+						if(data['error']['username'])
+						{	 	
+							jQuery("#user_login").addClass('errorinput');
+							jQuery("#account-login").after('<div class="clear"></div><span class="error">' + data['error']['username'] + '</span>');
 						}
+						
+						
 						
 						if(data['error']['invalidauth'])
 						{	 	
