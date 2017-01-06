@@ -677,3 +677,7 @@ font-size: 20px;
 .logregister a{color:#2DC4D9;}
 #student_register label.error{width:100%;}
 .msgdisplay .success{color:#003300;}
+.courses-description iframe {
+    height: 500px;
+    width: 100%;
+}
