@@ -678,6 +678,6 @@ font-size: 20px;
 #student_register label.error{width:100%;}
 .msgdisplay .success{color:#003300;}
 .courses-description iframe {
-    height: 500px;
+    height: 2000px;
     width: 100%;
 }

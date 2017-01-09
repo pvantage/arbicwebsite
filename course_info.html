@@ -38,6 +38,7 @@ jQuery(document).ready(function(){
 			cordova.InAppBrowser.open(jQuery(this).attr('href'),'_blank','location=no');
 			return false;
 		});
+		
 	 }
 	 
 	 
@@ -60,6 +61,26 @@ jQuery(document).ready(function(){
 					if(data['course'])
 					{	 	
 						jQuery(".wrapper").html(data['course']);
+						var checkiframe=false;
+						jQuery('.wrapper iframe').each(function() {
+							var src=jQuery(this).attr('src');
+							var pdfnames=src.split('/');
+							var title=jQuery(this).attr('title');
+							if(pdfnames.length>0 && jQuery.trim(title)==''){
+								title=pdfnames[(pdfnames.length-1)]
+							};
+							
+							jQuery('<a class="openiframe" href="'+src+'">'+title+'</a>').insertAfter(this);
+							jQuery(this).remove();
+							checkiframe=true;
+							
+						});
+						if(checkiframe){
+							jQuery('.wrapper a.openiframe').click(function(){
+								cordova.InAppBrowser.open(jQuery(this).attr('href'),'_blank','location=no');
+								return false;
+							});
+						}
 						jQuery('.accordian-content ul').addClass('ul-document');
 						localStorage.setItem('course_name_' + course_id, data['course']);
 						if(jQuery('.documentlist ul').length<=0)
