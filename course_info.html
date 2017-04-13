@@ -92,6 +92,10 @@ jQuery(document).ready(function(){
 							return false;
 						});
 						
+						jQuery('.toptext a.survey').click(function(){
+							cordova.InAppBrowser.open(jQuery(this).attr('href'),'_blank','location=no');
+							return false;
+						});
 						jQuery('form.qmn_quiz_form').submit(function(){
 							var quizData=$(this).serialize();
 							jQuery.ajax({
