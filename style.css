@@ -217,11 +217,12 @@ select option { padding: 0 5px;}
   border-radius: 10px;
   font-size: 21px;
   font-weight: 400;
-  margin-bottom:20px;
+  margin-bottom:3px;
   padding: 10px;
   text-align: center;
   text-transform: uppercase;
 }
+.toptext .survey{float:right; margin-right:22px;}
 .inner-content h4 a {
   color: #000;
 }
@@ -677,7 +678,10 @@ font-size: 20px;
 .logregister a{color:#2DC4D9;}
 #student_register label.error{width:100%;}
 .msgdisplay .success{color:#003300;}
-.courses-description iframe {
-    height: 2000px;
+
+/*.courses-description iframe {
+    height: 100px;
     width: 100%;
-}
+	overflow:scroll !important;
+	-webkit-overflow-scrolling:touch !important;
+}*/
