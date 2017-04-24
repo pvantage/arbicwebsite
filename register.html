@@ -33,6 +33,40 @@ jQuery(document).ready(function(){
 		phone_number = phone_number.replace(/\s+/g, ""); 
 		return this.optional(element) || phone_number.match(/^0\d{9,}$/);
 	}, "Phone number should start with 0");
+	var login_url = siteurl + '/api/account_register.php';		
+		
+	jQuery.ajax({ 
+	 type: 'POST',  
+	 url: login_url,  
+	 dataType: 'json',  
+	 data: {location_city:1},  
+	 crossDomain: true, 
+	beforeSend: function() {
+			jQuery('#wp-submit').addClass('disable');
+			//$('#account-login').attr('disabled', true);
+	},			 	
+	 complete: function() {				
+	 },
+	 success: function(data) { 	
+		if(data['cities'])
+		{
+			var city='<option value="">---- Please Select a city المدينة ----</option>';
+			jQuery(data['cities']).each(function(index){
+				city+='<option value="'+data['cities'][index]['id']+'" >'+data['cities'][index]['name']+'</option>';
+			});
+			jQuery('#stud_city').html(city);
+		}
+		if(data['courses'])
+		{
+			var course='<option value="">---- Please select job location مدينة العمل ----</option>';
+			jQuery(data['courses']).each(function(index){
+				course+='<option value="'+data['courses'][index]['id']+'" >'+data['courses'][index]['name']+'</option>';
+			});
+			jQuery('#job_location').html(course);
+		}
+
+	}
+   });
 	jQuery('#student_register').validate({
 		  rules: {
 			pwd: "required",
@@ -136,17 +170,17 @@ jQuery(document).ready(function(){
     
         		<div class="row">
 						<label control-label"><span class="req">*</span><img src="images/icon3.png"></label>
-						<div class="restinput"><input class="form-control required" placeholder="Please enter full name" name="stud_name" id="stud_name" value="" type="text"></div>
+						<div class="restinput"><input class="form-control required" placeholder="Please enter full name الأسم" name="stud_name" id="stud_name" value="" type="text"></div>
 					</div> 
 					
 					<div class="row">
 						<label control-label"><span class="req">*</span><img src="images/icon4.png"></label>
-						<div class="restinput"><input maxlength="15" placeholder="Please enter SCFHC Number" class="form-control required" name="scfhc_number" id="scfhc_number" value="" type="text"></div>
+						<div class="restinput"><input maxlength="15" placeholder="Please enter SCFHC Number رقم هيئة التخصصات" class="form-control required" name="scfhc_number" id="scfhc_number" value="" type="text"></div>
 					</div> 
 					
 					<div class="row">
 						<label class="control-label"><span class="req">*</span><img src="images/icon5.png"></label>
-						<div class="restinput"><input maxlength="10" placeholder="Please enter National/Iqama ID Number" class="form-control required" name="nation_iqama_id_number" id="nation_iqama_id_number" value="" type="text"></div>
+						<div class="restinput"><input maxlength="10" placeholder="Please enter National/Iqama ID Number الهوية/الإقامة" class="form-control required" name="nation_iqama_id_number" id="nation_iqama_id_number" value="" type="text"></div>
 					</div> 
 					
 					<div class="row">
@@ -155,49 +189,7 @@ jQuery(document).ready(function(){
 						<select class="form-control required" name="job_location" id="job_location">
 						<option value="">---- Please select job location ----</option>
 														
-								 <option value="52" >الرياض</option>
-							
-														
-								 <option value="53" >تبوك</option>
-							
-														
-								 <option value="54" >القصيم</option>
-							
-														
-								 <option value="55" >الشمال</option>
-							
-														
-								 <option value="56" >الطائف</option>
-							
-														
-								 <option value="57" >حفر الباطن</option>
-							
-														
-								 <option value="58" >جدة</option>
-							
-														
-								 <option value="59" >المدينة المنورة</option>
-							
-														
-								 <option value="60" >الجوف</option>
-							
-														
-								 <option value="61" >قريات</option>
-							
-														
-								 <option value="62" >مكة المكرمة</option>
-							
-														
-								 <option value="63" >المنطقة الشرقية</option>
-							
-														
-								 <option value="64" >بيشة</option>
-							
-														
-								 <option value="65" >تبوك</option>
-							
-														
-								 <option value="66" >أبها</option>
+								
 							
 												</select>
 						
@@ -206,7 +198,7 @@ jQuery(document).ready(function(){
 					
 					<div class="row">
 						<label class="control-label"><span class="req">*</span> <img src="images/icon7.png"></label>
-						<div class="restinput"><input placeholder="Please enter specialty" class="form-control required" name="stud_spl" id="stud_spl" value="" type="text"></div>
+						<div class="restinput"><input placeholder="Please enter specialty التخصص" class="form-control required" name="stud_spl" id="stud_spl" value="" type="text"></div>
 					</div> 
 					
 					<div class="row">
@@ -216,19 +208,19 @@ jQuery(document).ready(function(){
 					
 					<div class="row">
 						<label class="control-label"><span class="req">*</span><img src="images/icon9.png"></label>
-						<div class="restinput"><input maxlength="50" class="form-control required email" placeholder="Please enter email address" name="email" id="email" value="" type="text"></div>
+						<div class="restinput"><input maxlength="50" class="form-control required email" placeholder="Please enter email address البريد الالكتروني " name="email" id="email" value="" type="text"></div>
 					</div> 
 					<div class="row">
 						<label class="control-label"><span class="req">*</span><img src="images/icon9.png"></label>
-						<div class="restinput"><input maxlength="50" class="form-control required email" placeholder="Please enter confirm email address" name="email2" id="email2" value="" type="text"></div>
+						<div class="restinput"><input maxlength="50" class="form-control required email" placeholder="Please enter confirm email address تأكيد البريد الالكتروني " name="email2" id="email2" value="" type="text"></div>
 					</div>
 					<div class="row">
 						<label class="control-label"><span class="req">*</span><img src="images/pwd.png"></label>
-						<div class="restinput"><input maxlength="50" class="form-control required" placeholder="Please enter password" name="pwd" id="pwd" value="" type="password"></div>
+						<div class="restinput"><input maxlength="50" class="form-control required" placeholder="Please enter password كلمة المرور" name="pwd" id="pwd" value="" type="password"></div>
 					</div>
 					<div class="row">
 						<label class="control-label"><span class="req">*</span><img src="images/pwd.png"></label>
-						<div class="restinput"><input maxlength="50" class="form-control required" placeholder="Please enter confirm password" name="pwd2" id="pwd2" value="" type="password"></div>
+						<div class="restinput"><input maxlength="50" class="form-control required" placeholder="Please enter confirm password تأكيد كلمة المرور" name="pwd2" id="pwd2" value="" type="password"></div>
 					</div>
 					
 					<div class="row">
@@ -237,49 +229,7 @@ jQuery(document).ready(function(){
 							<option value="">---- Please Select a city ----</option>
 							
 															
-								<option value="52" >الرياض</option>
-							
-														
-								<option value="53" >تبوك</option>
-							
-														
-								<option value="54" >القصيم</option>
-							
-														
-								<option value="55" >الشمال</option>
-							
-														
-								<option value="56" >الطائف</option>
-							
-														
-								<option value="57" >حفر الباطن</option>
-							
-														
-								<option value="58" >جدة</option>
-							
-														
-								<option value="59" >المدينة المنورة</option>
-							
-														
-								<option value="60" >الجوف</option>
-							
-														
-								<option value="61" >قريات</option>
-							
-														
-								<option value="62" >مكة المكرمة</option>
-							
-														
-								<option value="63" >المنطقة الشرقية</option>
-							
-														
-								<option value="64" >بيشة</option>
-							
-														
-								<option value="65" >تبوك</option>
-							
-														
-								<option value="66" >أبها</option>
+								
 							
 												</select>
 						</div>
